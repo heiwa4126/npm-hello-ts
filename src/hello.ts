@@ -1,5 +1,3 @@
-export function hello(): string {
+export const hello = (): string => {
   return "hello";
-}
-
-export default hello;
+};

@@ -1,4 +1,5 @@
 import { hello1 } from "@heiwa4126/hello1";
+export { hello3 } from "./hello3";
 
 export function hello(): string {
   return "hello";

@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "commonjs",
-    "declaration": false,
+    "module": "ESNext",
+    "declaration": true,
     "sourceMap": false,
     "esModuleInterop": false,
-    "outDir": "./dist",
-    "strict": true,
+    "outDir": "./dist/mjs",
     "moduleResolution": "node"
   },
-  "include": ["src/**/*", "test/**/*", "examples/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

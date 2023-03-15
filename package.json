@@ -1,22 +1,15 @@
 {
   "name": "@heiwa4126/hello-ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "An example of npm module in Typescript",
-  "main": "dist/src/hello.js",
-  "type": "commonjs",
   "scripts": {
     "build": "tsc",
+    "build:mjs": "tsc --project ./tsconfig.mjs.json",
     "watch": "tsc -w",
     "test": "jest",
     "start": "node dist/src/hello.js",
     "example:hello": "node dist/examples/hello.js"
   },
-  "files": [
-    "dist/src",
-    "package.json",
-    "README.md",
-    "LICENSE"
-  ],
   "keywords": [],
   "author": "heiwa4126@gmail.com",
   "license": "ISC",
@@ -28,5 +21,18 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/heiwa4126/npm-hello-ts"
-  }
+  },
+  "exports": {
+    "import": "./dist/mjs/hello.mjs",
+    "require": "./dist/src/hello.js",
+    "node": "./dist/mjs/hello.mjs",
+    "default": "./dist/src/hello.js"
+  },
+  "files": [
+    "dist/src",
+    "dist/mjs",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
 }

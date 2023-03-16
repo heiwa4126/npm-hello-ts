@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const fs = require("fs");
 const path = require("path");
 const recast = require("recast");
@@ -18,31 +20,29 @@ function transformModule(inputFilename, outputFilename, transformFn) {
   // ソースコードをパースする
   const ast = recast.parse(code);
 
+  function handleImportExportDeclaration(path, self) {
+    // export元がローカルファイルである場合、拡張子.mjsを追加する
+    const sourceValue = path.node.source ? path.node.source.value : null;
+    if (sourceValue && (sourceValue.startsWith("./") || sourceValue.startsWith("../"))) {
+      path.node.source.value = transformFn(sourceValue);
+      console.log(`${inputFilename}: ${sourceValue} -> ${path.node.source.value}`); // 変更されたexport文をログに出力する
+    }
+    self.traverse(path); // トラバースを継続する
+  }
+
   // ASTをトラバースしてimport/export文を探す
   recast.visit(ast, {
     visitImportDeclaration(path) {
-      // import元がローカルファイルである場合、拡張子.mjsを追加する
-      const sourceValue = path.node.source.value;
-      if (sourceValue.startsWith("./") || sourceValue.startsWith("../")) {
-        path.node.source.value = transformFn(sourceValue);
-      }
-      // 変更されたimport文をログに出力する
-      console.log(recast.print(path.node).code);
-      // トラバースを継続する
-      this.traverse(path);
+      handleImportExportDeclaration(path, this);
     },
-
+    visitExportNamedDeclaration(path) {
+      handleImportExportDeclaration(path, this);
+    },
     visitExportDeclaration(path) {
-      // export元がローカルファイルである場合、拡張子.mjsを追加する
-      const sourceValue = path.node.source ? path.node.source.value : null;
-      if (sourceValue && (sourceValue.startsWith("./") || sourceValue.startsWith("../"))) {
-        path.node.source.value = transformFn(sourceValue);
-      }
-      // 変更されたexport文をログに出力する
-      console.log(recast.print(path.node).code);
-      // トラバースを継続する
-      this.traverse(path);
+      handleImportExportDeclaration(path, this);
     },
+    // まだ必要なvisitImport...(path), visitExport...(path) があるかもしれない。
+    // https://github.com/benjamn/ast-types/blob/master/src/gen/visitor.ts みて追加。
   });
 
   // トランスパイルされたコードを生成する

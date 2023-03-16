@@ -1,6 +1,6 @@
 {
   "name": "@heiwa4126/hello-ts",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "An example of npm module in Typescript",
   "scripts": {
     "build:cjs": "tsc",
@@ -26,10 +26,27 @@
     "url": "https://github.com/heiwa4126/npm-hello-ts"
   },
   "exports": {
-    "import": "./dist/mjs/hello.mjs",
-    "require": "./dist/src/hello.js",
-    "node": "./dist/mjs/hello.mjs",
-    "default": "./dist/src/hello.js"
+    ".": {
+      "import": "./dist/mjs/hello.mjs",
+      "types": "./dist/mjs/hello.d.ts",
+      "require": "./dist/src/hello.js",
+      "node": "./dist/mjs/hello.mjs",
+      "default": "./dist/src/hello.js"
+    },
+    "./hello3": {
+      "import": "./dist/mjs/hello3.mjs",
+      "require": "./dist/src/hello3.js",
+      "node": "./dist/mjs/hello3.mjs",
+      "default": "./dist/src/hello3.js",
+      "types": "./dist/mjs/hello3.d.ts"
+    },
+    "./sub/*": {
+      "import": "./dist/mjs/sub/hello4.mjs",
+      "types": "./dist/mjs/sub/hello4.d.ts",
+      "require": "./dist/src/sub/hello4.js",
+      "node": "./dist/mjs/sub/hello4.mjs",
+      "default": "./dist/src/hello4.js"
+    }
   },
   "types": "./dist/mjs/hello.d.ts",
   "files": [
@@ -40,7 +57,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@heiwa4126/hello1": "^1.0.3"
+    "@heiwa4126/hello1": "^1.0.5"
   },
   "peerDependencies": {
     "@heiwa4126/hello1": "^1"

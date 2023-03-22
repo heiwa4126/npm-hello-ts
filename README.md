@@ -84,6 +84,30 @@ npm run watch
 ### 元の TypeScript で import を使っている場合
 
 ECMAScript 向けに tsc でトランスパイルした場合、import で拡張子がつかないので、".mjs" を付加する必要がある。
+`bin\compileES6.cjs` 参照。
+
+さらに拡張子を ".js"から ".mjs" に変更する必要がある。
+
+### 元の TypeScript で サブモジュールを使っている場合
+
+"package.json"の "exports"フィールドを一生懸命書く必要がある。
+これ書かないとサブモジュールは全滅する。
+
+ただし
+"package.json"の "exports"フィールドに対応している
+Node.js と tsc のバージョンが限られているし、
+さらに"exports"フィールド内の"types"フィールドに対応している
+Node.js と tsc のバージョンはさらに限られている。
+そのうえ tsconfig の設定の組み合わせがかなり面倒(特に moduleResolution)。
+
+正直サブモジュール使う例がそんなにあるとは思えないので、
+もとの TypeScript を 1 ファイルにするか
+外部に export するやつのみ index.ts にまとめて、
+"exports"フィールドを使わないようにするのが楽だと思う
+
+tsc v5 で moduleResolution: bundler が使えて、
+IDE もこれに対応できるようになれば状況は変わるけど、
+まだ少しかかりそう。
 
 ## 参考
 

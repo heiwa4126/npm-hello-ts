@@ -7,7 +7,7 @@
     "esModuleInterop": false,
     "outDir": "./dist",
     "strict": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node16"
   },
   "include": ["src/**/*", "test/**/*", "examples/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

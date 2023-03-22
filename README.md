@@ -2,6 +2,15 @@
 
 TypeScript で書いたモジュールを npmjs で公開する練習。
 
+TypeScript から
+
+- Node.js の CommonJS
+- Node.js の ECMAScript (ES Module)
+- ブラウザ
+- TypeScript
+
+用のコードが生成されるはず。
+
 ## 使い方
 
 ```bash
@@ -69,3 +78,13 @@ npm run watch
 ```
 
 で `tsc -w` を起動して、ソースを書き換えていく。
+
+## メモ
+
+### 元の TypeScript で import を使っている場合
+
+ECMAScript 向けに tsc でトランスパイルした場合、import で拡張子がつかないので、".mjs" を付加する必要がある。
+
+## 参考
+
+- [デュアルパッケージ開発者のための tsconfig \(Dual Package\) \| TypeScript 入門『サバイバル TypeScript』](https://typescriptbook.jp/reference/advanced-topics/tsconfig-for-dual-package-developers)

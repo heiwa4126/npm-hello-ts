@@ -32,13 +32,52 @@ function transformModule(inputFilename, outputFilename, transformFn) {
 
   // ASTをトラバースしてimport/export文を探す
   recast.visit(ast, {
+    visitImportSpecifier(path) {
+      // import { foo } from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitImportDefaultSpecifier(path) {
+      // import foo from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitImportNamespaceSpecifier(path) {
+      // import * as foo from 'module';
+      handleImportExportDeclaration(path, this);
+    },
     visitImportDeclaration(path) {
+      // import { foo } from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitImportExpression(path) {
+      // import('module');
+      handleImportExportDeclaration(path, this);
+    },
+    visitImport(path) {
+      // import 'module';
       handleImportExportDeclaration(path, this);
     },
     visitExportNamedDeclaration(path) {
+      // export { foo } from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitExportAllDeclaration(path) {
+      // export * from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitExportBatchSpecifier(path) {
+      // export { foo, bar } from 'module';
       handleImportExportDeclaration(path, this);
     },
     visitExportDeclaration(path) {
+      // export { foo } from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitExportNamespaceSpecifier(path) {
+      // export * as foo from 'module';
+      handleImportExportDeclaration(path, this);
+    },
+    visitExportDefaultSpecifier(path) {
+      // export { default as foo } from 'module';
       handleImportExportDeclaration(path, this);
     },
     // まだ必要なvisitImport...(path), visitExport...(path) があるかもしれない。

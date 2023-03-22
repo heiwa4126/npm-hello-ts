@@ -6,7 +6,7 @@
     "sourceMap": false,
     "esModuleInterop": false,
     "outDir": "./dist/mjs",
-    "moduleResolution": "node16"
+    "moduleResolution": "nodenext"
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts"]

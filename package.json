@@ -16,7 +16,7 @@
   "author": "heiwa4126@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "@heiwa4126/convert-imports-to-mjs": "^1.0.0",
+    "@heiwa4126/convert-imports-to-mjs": "^1.0.1",
     "@types/jest": "^29.5.0",
     "jest": "^29.5.0",
     "typescript": "^5.0.2"

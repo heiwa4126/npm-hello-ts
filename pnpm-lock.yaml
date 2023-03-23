@@ -1,19 +1,19 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@heiwa4126/convert-imports-to-mjs': ^1.0.0
   '@heiwa4126/hello1': ^1.0.12
   '@types/jest': ^29.5.0
   jest: ^29.5.0
-  recast: ^0.22.0
   typescript: ^5.0.2
 
 dependencies:
   '@heiwa4126/hello1': 1.0.12
 
 devDependencies:
+  '@heiwa4126/convert-imports-to-mjs': 1.0.0
   '@types/jest': 29.5.0
   jest: 29.5.0
-  recast: 0.22.0
   typescript: 5.0.2
 
 packages:
@@ -357,6 +357,13 @@ packages:
 
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
+    dev: true
+
+  /@heiwa4126/convert-imports-to-mjs/1.0.0:
+    resolution: {integrity: sha512-A6irpGV2IvQZ6T6yNcF5GXS75ifIIJqtdj8abIjGM7O35OOpbQQFa2gka5IYKMUAWTKlWBtvj5TCOARgkgSq5Q==}
+    hasBin: true
+    dependencies:
+      recast: 0.22.0
     dev: true
 
   /@heiwa4126/hello1/1.0.12:
@@ -890,7 +897,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001469
-      electron-to-chromium: 1.4.335
+      electron-to-chromium: 1.4.337
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -1061,8 +1068,8 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dev: true
 
-  /electron-to-chromium/1.4.335:
-    resolution: {integrity: sha512-l/eowQqTnrq3gu+WSrdfkhfNHnPgYqlKAwxz7MTOj6mom19vpEDHNXl6dxDxyTiYuhemydprKr/HCrHfgk+OfQ==}
+  /electron-to-chromium/1.4.337:
+    resolution: {integrity: sha512-W8gdzXG86mVPoc56eM8YA+QiLxaAxJ8cmDjxZgfhLLWVvZQxyA918w5tX2JEWApZta45T1/sYcmFHTsTOUE3nw==}
     dev: true
 
   /emittery/0.13.1:

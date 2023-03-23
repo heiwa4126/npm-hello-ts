@@ -5,7 +5,7 @@
   "scripts": {
     "build:cjs": "tsc",
     "build:mjs": "tsc --project ./tsconfig.mjs.json && node ./bin/compileES6.cjs",
-    "build": "tsc && tsc --project ./tsconfig.mjs.json && node ./bin/compileES6.cjs",
+    "build": "tsc && tsc --project ./tsconfig.mjs.json && convert-imports-to-mjs ./dist/mjs",
     "watch": "tsc -w",
     "test": "jest",
     "example": "node ./examples/hello.cjs && node ./examples/hello.mjs && node ./dist/examples/hello.js"
@@ -16,9 +16,9 @@
   "author": "heiwa4126@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "@heiwa4126/convert-imports-to-mjs": "^1.0.0",
     "@types/jest": "^29.5.0",
     "jest": "^29.5.0",
-    "recast": "^0.22.0",
     "typescript": "^5.0.2"
   },
   "repository": {
